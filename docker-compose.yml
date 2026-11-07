@@ -1,0 +1,10 @@
+services:
+  postcraft:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - postcraft-data:/data
+    restart: unless-stopped
+volumes:
+  postcraft-data:

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Postcraft · Social post editor</title>
+<link rel="stylesheet" href="/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Fraunces:wght@600;800&family=Space+Grotesk:wght@500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="top">
+  <strong class="brand">Postcraft</strong>
+  <input id="name" value="Untitled post" aria-label="Design name">
+  <select id="size" aria-label="Post size">
+    <option value="1080x1080">Instagram post · 1080×1080</option>
+    <option value="1080x1350">Instagram portrait · 1080×1350</option>
+    <option value="1080x1920">Story / Reel · 1080×1920</option>
+    <option value="1200x627">LinkedIn · 1200×627</option>
+    <option value="1600x900">X / Twitter · 1600×900</option>
+    <option value="1200x630">Facebook link · 1200×630</option>
+  </select>
+  <span class="sp"></span>
+  <button id="undo" title="Undo (Ctrl+Z)">Undo</button>
+  <button id="redo" title="Redo (Ctrl+Y)">Redo</button>
+  <button id="save">Save</button>
+  <button id="export" class="primary">Download PNG</button>
+</header>
+
+<aside class="left">
+  <h2>Add</h2>
+  <button data-add="headline">Headline</button>
+  <button data-add="body">Body text</button>
+  <button data-add="rect">Rectangle</button>
+  <button data-add="circle">Circle</button>
+  <button data-add="line">Line</button>
+  <label class="btn">Upload image<input id="file" type="file" accept="image/*" hidden></label>
+  <h2>Background</h2>
+  <div class="swatches" id="bgSwatches"></div>
+  <input type="color" id="bg" value="#ffffff" aria-label="Background colour">
+  <h2>Your designs</h2>
+  <ul id="designs"></ul>
+  <button id="new">New design</button>
+</aside>
+
+<main id="stage"><div id="wrap"><canvas id="c"></canvas></div></main>
+
+<aside class="right" id="props" hidden>
+  <h2>Selected</h2>
+  <label>Fill <input type="color" id="fill"></label>
+  <div id="textProps">
+    <label>Font
+      <select id="font">
+        <option>Archivo</option><option>Fraunces</option>
+        <option>Space Grotesk</option><option>DM Serif Display</option>
+      </select></label>
+    <label>Size <input type="number" id="fsize" min="8" max="400"></label>
+    <div class="row">
+      <button id="bold">Bold</button><button id="italic">Italic</button>
+      <button data-align="left">Left</button><button data-align="center">Center</button><button data-align="right">Right</button>
+    </div>
+  </div>
+  <label>Opacity <input type="range" id="opacity" min="0.05" max="1" step="0.05"></label>
+  <div class="row">
+    <button id="front">Bring forward</button><button id="back">Send back</button>
+    <button id="dup">Duplicate</button><button id="del" class="danger">Delete</button>
+  </div>
+</aside>
+
+<div id="toast" role="status"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
